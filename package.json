@@ -1,0 +1,26 @@
+{
+  "name": "promise-api-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yevhenorlov/promise-api-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yevhenorlov/promise-api-workshop/issues"
+  },
+  "homepage": "https://github.com/yevhenorlov/promise-api-workshop#readme"
+}
