@@ -17,20 +17,12 @@ test(`CustomPromise.allSettled resolves with an array of promises when given an 
     scheduleResolve(120, 2),
     scheduleReject(130, "reject1")
   ];
-  const mockOutput = [1, 2, "reject1"];
-  async function getResultValues() {
-    const res = [];
-    const arr = await CustomPromise.allSettled(mockInput);
-    for (let i = 0; i < mockInput.length; i++) {
-      try {
-        res[i] = await arr[i];
-      } catch (err) {
-        res[i] = err;
-      }
-    }
-    return res;
-  }
-  const resultValues = await getResultValues();
+  const mockOutput = [
+    { status: "fulfilled", value: 1 },
+    { status: "fulfilled", value: 2 },
+    { status: "rejected", reason: "reject1" }
+  ];
+  const resultValues = await CustomPromise.allSettled(mockInput);
   return expect(resultValues).toMatchObject(mockOutput);
 });
 
