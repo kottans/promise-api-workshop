@@ -50,7 +50,8 @@ class CustomPromise extends Promise {
     // 👉
   }
   // Accepts an iterable of Promises, fires each one simultaneously and outputs a Promise.
-  // If all Promises in the passed iterable were resolved or rejected, put them in an array and resolve the output Promise with that array.
+  // If all Promises in the passed iterable were resolved or rejected, put them in an array and resolve the output Promise with an array of state snapshots, e.g.:
+  // [{ status: 'fulfilled', value: v }, { status: 'rejected', reason: error }].
   static allSettled(iterable) {
     // 👉
   }
