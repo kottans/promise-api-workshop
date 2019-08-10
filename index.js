@@ -2,7 +2,7 @@
  * Your task is to implement Promise static methods that already exist in the API (.resolve, .reject, .all, .race),
  * as well as a couple of new ones that are not yet implemented (.allSettled, .any) via a Promise constructor.
  *
- * Note that after you implement a method, it's allowed to use it in other methods.
+ * Note that after you implement a method, it's allowed to use it in other methods (e.g. `Promise.resolve`).
  *
  * Methods behavior should match the TC39 specification, so pay attention to the requirements described in the comments.
  *

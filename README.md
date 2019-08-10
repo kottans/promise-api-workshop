@@ -12,7 +12,7 @@ Open `index.js` to begin.
 
 ## Requirements
 
-1. Note that after you implement a method, it's allowed to use it in other methods.
+1. Note that after you implement a method, it's allowed to use it in other methods (e.g. `Promise.resolve`).
 
 1. Methods behavior should match the TC39 specification, so pay attention to the requirements described in the comments.
 
