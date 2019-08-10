@@ -27,11 +27,11 @@ After you're done, check your implementation by running `npm run test` in the co
 If you'd like to run tests separately for individual methods, try:
 
 ```sh
-jest __tests__/[nameOfTheMethod].js
+npm run test [nameOfTheMethod]
 ```
 
 For example, to run `CustomPromise.resolve` tests only:
 
 ```sh
-jest __tests__/resolve.js`
+npm run test resolve
 ```

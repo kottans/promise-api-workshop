@@ -15,10 +15,10 @@
  * in the console.
  *
  * If you'd like to run tests separately for individual methods, try:
- * `jest __tests__/[nameOfTheMethod].js`
+ * `npm run test [nameOfTheMethod]`
  *
  * For example, to run CustomPromise.resolve tests only:
- * * `jest __tests__/resolve.js`
+ * `npm run test resolve`
  */
 
 class CustomPromise extends Promise {
