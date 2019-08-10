@@ -24,35 +24,97 @@ class CustomPromise extends Promise {
   // Accepts a value, returns a Promise resolved with that value.
   // If the value is a thenable, attempts to unwrap that thenable before outputting a value
   static resolve(value) {
-    // 👉
+    return new Promise((resolve) => {
+      resolve(value);
+    });
   }
   // Accepts a value, returns a Promise rejected with that value.
   static reject(value) {
-    // 👉
+    return new Promise((resolve, reject) => {
+      reject(value);
+    });
   }
   // Accepts an iterable of Promises, fires each one simultaneously and outputs a Promise.
   // If at least one Promise in the passed iterable was rejected, the output Promise is immediately rejected with reason of that rejected Promise.
   // If at least one Promise in the passed iterable was resolved, the output Promise is immediately resolved with reason of that resolved Promise.
   static race(iterable) {
-    // 👉
+    if (!Array.isArray(iterable)) {
+      throw new TypeError("CustomPromise.race input must be an array");
+    }
+    return new Promise((resolve, reject) => {
+      iterable.forEach((p) => {
+        Promise.resolve(p).then(resolve, reject);
+      });
+    });
   }
   // Accepts an iterable of Promises, fires each one simultaneously and outputs a Promise.
   // If at least one Promise in the passed iterable was rejected, the output Promise is immediately rejected with reason of that rejected Promise.
   // If all Promises in the passed iterable were resolved, put them in an array and resolve the output Promise with that array.
   static all(iterable) {
-    // 👉
+    if (!Array.isArray(iterable)) {
+      throw new TypeError("CustomPromise.all input must be an array");
+    }
+    return new Promise((resolve, reject) => {
+      const result = [];
+      let counter = iterable.length;
+      function checkIfDone() {
+        if (--counter === 0) resolve(result);
+      }
+      iterable.forEach((p, i) => {
+        Promise.resolve(p).then((val) => {
+          result[i] = val;
+          checkIfDone();
+        }, reject);
+      });
+    });
   }
   // Accepts an iterable of Promises, fires each one simultaneously and outputs a Promise.
   // If at least one Promise in the passed iterable was resolved, the output Promise is immediately resolved with value of that resolved Promise.
   // If all Promises in the passed iterable were rejected, put them in an array and reject the output Promise with that array.
   static any(iterable) {
-    // 👉
+    if (!Array.isArray(iterable)) {
+      throw new TypeError("CustomPromise.any input must be an array");
+    }
+    return new Promise((resolve, reject) => {
+      const result = [];
+      let counter = iterable.length;
+      function checkIfDone() {
+        if (--counter === 0) reject(result);
+      }
+      iterable.forEach((p, i) => {
+        Promise.resolve(p).then(resolve, (val) => {
+          result[i] = val;
+          checkIfDone();
+        });
+      });
+    });
   }
   // Accepts an iterable of Promises, fires each one simultaneously and outputs a Promise.
   // If all Promises in the passed iterable were resolved or rejected, put them in an array and resolve the output Promise with an array of state snapshots, e.g.:
   // [{ status: 'fulfilled', value: v }, { status: 'rejected', reason: error }].
   static allSettled(iterable) {
-    // 👉
+    if (!Array.isArray(iterable)) {
+      throw new TypeError("CustomPromise.allSettled input must be an array");
+    }
+    return new Promise((resolve) => {
+      const result = [];
+      let counter = iterable.length;
+      function checkIfDone() {
+        if (--counter === 0) resolve(result);
+      }
+      iterable.forEach((p, i) => {
+        Promise.resolve(p)
+          .then(
+            (value) => {
+              result[i] = { status: "fulfilled", value };
+            },
+            (reason) => {
+              result[i] = { status: "rejected", reason };
+            }
+          )
+          .then(checkIfDone);
+      });
+    });
   }
 }
 
