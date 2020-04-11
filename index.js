@@ -1,12 +1,11 @@
 /*
- * Your task is to implement Promise static methods that already exist in the API (.resolve, .reject, .all, .race),
- * as well as a couple of new ones that are not yet implemented (.allSettled, .any) via a Promise constructor.
+ * Your task is to implement Promise static methods (.resolve, .reject, .all, .race, .allSettled, .any) via a Promise constructor.
  *
  * Note that after you implement a method, it's allowed to use it in other methods (e.g. `Promise.resolve`).
  *
  * Methods behavior should match the TC39 specification, so pay attention to the requirements described in the comments.
  *
- * Some inputs specify an "iterable", but it's ok to account for arrays only.
+ * Some inputs specify an "iterable", but for simplicity we'll be accounting for arrays only.
  *
  * Be sure to validate inputs — throw a TypeError if the input is invalid!
  *
@@ -57,4 +56,4 @@ class CustomPromise extends Promise {
   }
 }
 
-export default CustomPromise
+export default CustomPromise;

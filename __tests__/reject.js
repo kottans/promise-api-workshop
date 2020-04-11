@@ -1,7 +1,9 @@
-import CustomPromise from '../index.js'
+import CustomPromise from "../index.js";
 
-test('CustomPromise.reject("error reason") rejects to "error reason"', () => {
-  return expect(CustomPromise.reject('error reason')).rejects.toMatch(
-    'error reason'
-  )
-})
+describe("CustomPromise.reject", () => {
+  test('when passed "error reason", rejects to "error reason"', () => {
+    return expect(CustomPromise.reject("error reason")).rejects.toMatch(
+      "error reason"
+    );
+  });
+});
