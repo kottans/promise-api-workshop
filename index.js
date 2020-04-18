@@ -14,10 +14,10 @@
  * in the console.
  *
  * If you'd like to run tests separately for individual methods, try:
- * `npm run test [nameOfTheMethod]`
+ * `npm run test [nameOfTheMethod].js`
  *
  * For example, to run CustomPromise.resolve tests only:
- * `npm run test resolve`
+ * `npm run test resolve.js`
  */
 
 class CustomPromise extends Promise {
